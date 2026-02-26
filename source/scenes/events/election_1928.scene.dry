@@ -295,13 +295,13 @@ go-to: coalition_menu
 
 **Potential coalitions:**
 
-Weimar Coalition (pvda + cda + [+ d66_name +]): [+ weimar_coalition +]%
+Social-Christian Coalition (pvda + cda: social_christian_coalition +]%
 
-Grand Coalition (pvda + cda + BVP + [+ d66_name +] + vvd): [+ grand_coalition +]%
+Grand Coalition (pvda + cda + d66 + vvd): [+ grand_coalition +]%
 
-Bourgeois Coalition (cda + BVP + [+ d66_name +] + vvd + Others): [+ bourgeois_coalition +]%
+Bourgeois Coalition (cda  + d66 + vvd + Others): [+ bourgeois_coalition +]%
 
-Right-wing Coalition (cda + BVP + vvd + Others + pvv): [+ right_coalition +]%
+Right-wing Coalition (cda + vvd + Others + pvv): [+ right_coalition +]%
 
 [? if nacdai_urgency <= 1 and gl_r >= 15 : The rapid rise in gl votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
 
@@ -312,7 +312,7 @@ There are some potential coalition arrangements.
 @coalition_menu
 
 - @pvda_majority
-- @weimar_coalition
+- @grand_coalition
 - @grand_coalition
 - @new_grand_coalition
 - @unity_government
