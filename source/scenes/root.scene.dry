@@ -46,7 +46,7 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.factions = ['socialist', 'center', 'labor', 'thirdway', 'progressive'];
 // should this be normalized to 100%?
 Q.socialist_strength = 29;
 Q.socialist_dissent = 15;
@@ -56,6 +56,8 @@ Q.labor_strength = 10;
 Q.labor_dissent = 20;
 Q.thirdway_strength = 30;
 Q.thirdway_dissent = 5;
+Q.progressive_strength = 5;
+Q.progressive_dissent = 10;
 
 // secret events...
 Q.unions_independent = 0;
@@ -99,13 +101,13 @@ Q.moderate_plan_adopted = 0;
 // organizations
 
 // inter-party relations
-Q.z_relation = 50;
-Q.kpd_relation = 25;
-Q.ddp_relation = 60;
-Q.dvp_relation = 35;
+Q.cda_relation = 40;
+Q.sp_relation = 45;
+Q.d66_relation = 52;
+Q.vvd_relation = 35;
 // DNVP and NSDAP are invariably hostile
-Q.DNVP_relation = 10;
-Q.NSDAP_relation = 0;
+Q.pvv_relation = 10;
+Q.gl_relation = 58;
 
 Q.kpd_leader = "Thälmann";
 // alternative is the Conciliators as party leader
