@@ -1006,12 +1006,12 @@ if (Q.chancellor == "Brüning") {
     Q.vvd_relation -= 5;
 }
 Q.pro_republic -= 8;
-Q.workers_pvda -= 5;
-Q.new_middle_pvda -= 5;
-Q.old_middle_pvda -= 5;
+Q.workers_pvda += 1;
+Q.new_middle_pvda -= 20;
+Q.old_middle_pvda -= 10;
 Q.rural_pvda -= 5;
-Q.catholics_pvda -= 3;
-Q.new_middle_vvd -= 8;
+Q.catholics_pvda -= 9;
+Q.new_middle_vvd -= 10;
 Q.old_middle_vvd -= 8;
 Q.new_middle_d66 -= 5;
 Q.old_middle_d66 -= 10;
