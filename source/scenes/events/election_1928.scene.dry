@@ -205,26 +205,21 @@ data = data.concat([
     },
     {
         "id": "d66",
-        "legend": Q."d66",
-        "name": Q."d66",
+        "legend": "d66",
+        "name": "d66",
         "seats": Math.round(Q.d66_r*5),
     },
     {
         "id": "cda",
-        "legend": "Center",
-        "name": "Center",
-        "seats": Math.round((Q.cda_r - 3)*5),
+        "legend": "CDA",
+        "name": "CDA",
+        "seats": Math.round((Q.cda_r)*5),
     },
     {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": Math.round(3*5),
-    },
-    {
+        
         "id": "vvd",
-        "legend": "vvd",
-        "name": "vvd",
+        "legend": "VVD",
+        "name": "VVD",
         "seats": Math.round(Q.vvd_r*5),
     },
     {
