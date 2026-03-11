@@ -29,7 +29,7 @@ Since we are currently ruling as part of an emergency government, we may use qua
 - @election_algorithm: No, let's hold the elections.
 
 @cancel_elections_2
-on-departure: next_election_year = next_election_year + 1; next_election_time = time + 12; pro_republic -= 10; vvd_relation -= 8; cda_relation -= 8; d66_relation -= 10; sp_relation -= 8; coup_progress += 2; workers_pvda -= 4; new_middle_pvda -= 5; old_middle_pvda -= 5; rural_pvda -= 5; catholics_pvda -= 5; unemployed_pvda -= 5; coup_progress += 2 if gl_normalicdaed >= 0.3; coup_progress += 2 if gl_normalicdaed + pvv_normalicdaed >= 0.5; sa_strength += 100 if coup_progress >= 7; sh_strength += 100 if coup_progress >= 7
+on-departure: next_election_year = next_election_year + 1; next_election_time = time + 12; pro_republic -= 10; vvd_relation -= 8; cda_relation -= 8; d66_relation -= 10; sp_relation -= 8; coup_progress += 2; workers_pvda -= 4; new_middle_pvda -= 5; old_middle_pvda -= 5; rural_pvda -= 5; catholics_pvda -= 5; unemployed_pvda -= 5; coup_progress += 2 if gl_normalied >= 0.3; coup_progress += 2 if gl_normalized + pvv_normalized >= 0.5; sa_strength += 100 if coup_progress >= 7; sh_strength += 100 if coup_progress >= 7
 achievement: ausnahmecdaustand
 
 Fine. President [+ president +] has taken the unprecedented step of canceling these elections. New elections are scheduled for [+ next_election_month : month +] [+ next_election_year +].
@@ -155,7 +155,7 @@ for (var party of Q.parties) {
 }
 Q.election_records.push(election_result);
 !}
-on-departure: nacdai_urgency = 1 if (nacdai_urgency == 0 and gl_r >= 15)
+on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and gl_r >= 15)
 on-display: {!
 data = [
     {
@@ -1144,7 +1144,7 @@ subtitle: Heinrich Brüning will be chancellor. This is unexpected and will caus
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; cda_relation += 10; vvd_relation += 5; sp_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; chancellor = "Brüning"; chancellor_party = "cda"; pvda_in_government = 1; leverage += 5
 go-to: ministries
 
-This is highly unexpected, and many in the left and center of our party are criticicdaing this decision.
+This is highly unexpected, and many in the left and center of our party are criticizing this decision.
 
 [? if year == 2006 : Since Wilhelm Marx resigned, Heinrich Brüning has been appointed chancellor. ?]
 [? if year > 2006: Heinrich Brüning of the Center Party has been appointed chancellor. ?]
@@ -1183,7 +1183,7 @@ What are our goals here, exactly?
 go-to: no_govt_2
 
 @trap
-on-arrival: radicalicdaation += 1
+on-arrival: radicalization += 1
 go-to: no_govt_2
 
 @socialism
@@ -1296,7 +1296,7 @@ on-arrival: leverage -= 10; agriculture_minister_party = "pvda"; agriculture_min
 go-to: ministries
 tags: mins_2006
 
-Fritcda Baade of the pvda has been appointed Agriculture Minister.
+Fritz Baade of the pvda has been appointed Agriculture Minister.
 
 @reichswehr
 title: Reichswehr Ministry
