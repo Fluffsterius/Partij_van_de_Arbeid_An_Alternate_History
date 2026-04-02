@@ -246,7 +246,7 @@ go-to: coalition_menu
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **pvda**: {!</td><td>!} **[+ pvda_r +]%** {!</td><td>!} **[+ str_change_pvda +]** {!</td></tr>!}
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
+[+ if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} +]
 
 {!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}sp: {!</td><td>!} [+ sp_r +]% {!</td><td>!} [+ str_change_sp +] {!</td></tr>!}
 
@@ -275,9 +275,9 @@ Bourgeois Coalition (cda  + d66 + vvd + Others): [+ bourgeois_coalition +]%
 
 Right-wing Coalition (cda + vvd + Others + pvv): [+ right_coalition +]%
 
-[? if nacdai_urgency <= 1 and gl_r >= 15 : The rapid rise in gl votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
+[+ if nacdai_urgency <= 1 and gl_r >= 15 : The rapid rise in gl votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Germany. +]
 
-[? if anti_democratic_coalition >= 50 : Together, the anti-democratic sp, pvv, and gl have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
+[+ if anti_democratic_coalition >= 50 : Together, the anti-democratic sp, pvv, and gl have a majority in the Reichstag. A stable governing majority will be almost impossible. +]
 
 There are some potential coalition arrangements.
 
@@ -300,8 +300,8 @@ There are some potential coalition arrangements.
 
 @popular_front_coalition
 title: A new "Popular Front" coalition?
-subtitle: pvda + sp + cda + [+ d66_name +]  [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%)
-unavailable-subtitle: pvda + sp + cda + [+ d66_name +] [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%) - [? if ((sp_relation < 65 and sp_party_leader == "Thälmann") or (sp_relation < 45 and sp_party_leader == "Conciliators")): We do not have good enough relations with the sp. ?][? if (cda_relation < 45 and cda_party_leader == "Joos") or (cda_relation < 65 and cda_party_leader != "Joos" and sp_party_leader != "Conciliators") or (cda_relation < 55 and cda_party_leader != "Joos" and sp_party_leader == "Conciliators"): We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
+subtitle: pvda + sp + cda + [+ d66_name +]  [+ if sapd_formed: + SAPD +]([+ popular_front_coalition +]%)
+unavailable-subtitle: pvda + sp + cda + [+ d66_name +] [+ if sapd_formed: + SAPD +]([+ popular_front_coalition +]%) - [+ if ((sp_relation < 65 and sp_party_leader == "Thälmann") or (sp_relation < 45 and sp_party_leader == "Conciliators")): We do not have good enough relations with the sp. +][+ if (cda_relation < 45 and cda_party_leader == "Joos") or (cda_relation < 65 and cda_party_leader != "Joos" and sp_party_leader != "Conciliators") or (cda_relation < 55 and cda_party_leader != "Joos" and sp_party_leader == "Conciliators"): We do not have good enough relations with the Center Party. +][+ if communist_coalition < 3 : The Communists are unwilling to compromise at all. +]
 view-if: popular_front_coalition >= 50
 choose-if: (((sp_relation >= 65 and sp_party_leader == "Thälmann") or (sp_relation >= 45 and sp_party_leader == "Conciliators")) and ((cda_relation >= 45 and cda_party_leader == "Joos") or (cda_relation >= 65 and cda_party_leader != "Joos" and sp_party_leader != "Conciliators") or (cda_relation >= 55 and cda_party_leader != "Joos" and sp_party_leader == "Conciliators")) and d66_relation >= 50 and communist_coalition >= 3) or (cda_party_leader == "Joos" and sp_party_leader == "Conciliators" and cda_relation >= 30 and sp_relation >= 30)
 
@@ -315,7 +315,7 @@ The far-right might attempt a coup, if such a coalition were formed.
 @popular_front_2
 view-if: cda_party_leader != "Joos" or sp_party_leader != "Conciliators"
 
-Somehow, both the Communists and Center are at the very least willing to entertain negotiations. Of course, sp radicals and Center conservatives derail the negotiations almost immediately. The sp demands leadership of the coalition for themselves and their chairman Ernst Thälmann, [? if pvda_r > sp_r : despite our higher vote share, ?]while the Center is offended by the prospect of helping Bolsheviks enter government. *Something* must be done to restore balance.
+Somehow, both the Communists and Center are at the very least willing to entertain negotiations. Of course, sp radicals and Center conservatives derail the negotiations almost immediately. The sp demands leadership of the coalition for themselves and their chairman Ernst Thälmann, [+ if pvda_r > sp_r : despite our higher vote share, +]while the Center is offended by the prospect of helping Bolsheviks enter government. *Something* must be done to restore balance.
 
 - @popular_front_resources
 - @popular_front_democracy
@@ -332,7 +332,7 @@ go-to: popular_front_success
 
 @popular_front_democracy
 title: Convince the sp to accept democracy.
-subtitle: [? if sp_party_leader == "Conciliators" : The Conciliator leadership of the sp at least claim to support the Popular Front. ?]
+subtitle: [+ if sp_party_leader == "Conciliators" : The Conciliator leadership of the sp at least claim to support the Popular Front. +]
 unavailable-subtitle: Our relationship with the sp is not high enough.
 choose-if: (sp_relation >= 60 and communist_coalition >= 3) or sp_party_leader == "Conciliators"
 go-to: popular_front_success
@@ -348,14 +348,14 @@ on-arrival: pvda_in_government = 1; in_popular_front = 1; chancellor = "Breitsch
 achievement: grosse_volksfront
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 
-Somehow, the coalition is successfully formed! The conciliatory leadership of the Center Party and sp helped make the negotiations possible. We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the pvda, acceptable to the Center and sp [? if president == "Hindenburg" : as well as President Hindenburg, albeit extremely reluctantly ?].
+Somehow, the coalition is successfully formed! The conciliatory leadership of the Center Party and sp helped make the negotiations possible. We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the pvda, acceptable to the Center and sp [+ if president == "Hindenburg" : as well as President Hindenburg, albeit extremely reluctantly +].
 
 @popular_front_success
 on-arrival: pvda_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "pvda"; sp_relation += 10; coup_progress += 2; in_left_front = 0; in_weimar_coalition = 0; in_grand_coalition = 0; coalition_dissent = 0;
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 achievement: volksfront
 
-Somehow, surprisingly, the coalition is successfully formed! We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the pvda, acceptable to the Center and sp [? if president == "Hindenburg" : as well as President Hindenburg, albeit extremely reluctantly ?].
+Somehow, surprisingly, the coalition is successfully formed! We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the pvda, acceptable to the Center and sp [+ if president == "Hindenburg" : as well as President Hindenburg, albeit extremely reluctantly +].
 
 @popular_front_no_civil_war
 on-arrival: sp_goals_seen = 0; finance_minister_party = "cda"; interior_minister_party = "cda"; economic_minister_party = "cda"; labor_minister_party = "cda"; foreign_minister_party = "cda"; agriculture_minister_party = "cda"; reichswehr_minister = "I"; leverage = pvda_r + sp_r;
@@ -391,7 +391,7 @@ There are enough votes for the Nacdais and the pvv to form a coalition. [+ gl_le
 @far_right_win
 on-arrival: chancellor = gl_leader; chancellor_party = "gl"
 
-[? if president == "Hindenburg" : President Hindenburg's camarilla ?][? if president == "Braun" : President Braun somehow ?] has decided that [+ gl_leader +] must be chancellor [? if president == "Hindenburg": , and the aging president accepts their recommendations. ?][? if president == "Braun" : because it is what the constitution would stipulate. ?]
+[+ if president == "Hindenburg" : President Hindenburg's camarilla +][+ if president == "Braun" : President Braun somehow +] has decided that [+ gl_leader +] must be chancellor [+ if president == "Hindenburg": , and the aging president accepts their recommendations. +][+ if president == "Braun" : because it is what the constitution would stipulate. +]
 
 - @hitler_takes_power: What do we do now?
 
@@ -419,8 +419,8 @@ Alternatively, Braun could use the emergency powers of the presidency. Article 4
 
 @left_coalition
 title: Is a United Left coalition possible?
-subtitle: pvda + sp [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%)
-unavailable-subtitle: pvda + sp [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%). [? if sp_relation < 50 : We do not have adequate relations with the sp. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
+subtitle: pvda + sp [+ if sapd_formed: + SAPD +] ([+ left_coalition +]%)
+unavailable-subtitle: pvda + sp [+ if sapd_formed: + SAPD +] ([+ left_coalition +]%). [+ if sp_relation < 50 : We do not have adequate relations with the sp. +][+ if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. +]
 view-if: left_coalition >= 50
 choose-if: (sp_relation >= 50 or (sp_party_leader == "Conciliators" and sp_relation >= 40)) and communist_coalition >= 3
 
@@ -439,7 +439,7 @@ A far left coalition is impossible.
 
 @left_coalition_possible
 
-The sp is still very reluctant to join a coalition, despite grassroots friendliness between our memberships. The Stalinist leadership is vehemently against such a thing. They demand the appointment of Ernst Thälmann as chancellor in exchange for a coalition. [? if president == "Hindenburg" : There is no chance whatsoever that President Hindenburg would approve of the appointment of a die-hard communist as chancellor. ?] Alternatively, if our relations with them are good enough, we could convince them to support the appointment of one of our centrist or left-leaning members as chancellor.
+The sp is still very reluctant to join a coalition, despite grassroots friendliness between our memberships. The Stalinist leadership is vehemently against such a thing. They demand the appointment of Ernst Thälmann as chancellor in exchange for a coalition. [+ if president == "Hindenburg" : There is no chance whatsoever that President Hindenburg would approve of the appointment of a die-hard communist as chancellor. +] Alternatively, if our relations with them are good enough, we could convince them to support the appointment of one of our centrist or left-leaning members as chancellor.
 
 - @thalmann_chancellor: Appoint Thälmann as chancellor.
 - @left_coalition_resources
@@ -448,7 +448,7 @@ The sp is still very reluctant to join a coalition, despite grassroots friendlin
 
 @thalmann_chancellor
 choose-if: president == "Braun" and reformist_strength + neorevisionist_strength < left_strength
-unavailable-subtitle: [? if president != "Braun": President [+ president +] would never allow such a thing. ?] [? if reformist_strength >= left_strength : Most in the parliamentary party would not support Thälmann as chancellor. ?]
+unavailable-subtitle: [+ if president != "Braun": President [+ president +] would never allow such a thing. +] [+ if reformist_strength >= left_strength : Most in the parliamentary party would not support Thälmann as chancellor. +]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "sp"; sp_relation = 80; in_left_front = 1; pvda_in_government = 1 
 
 With great reluctance, President [+ president +] appoints [+ chancellor +] as chancellor.
@@ -509,7 +509,7 @@ unavailable-subtitle: The pvv is not interested in a coalition with the Center.
 view-if: right_coalition >= 50
 choose-if: year < 1929
 
-There are enough votes for a right-wing coalition of the Center (+ BVP), vvd, pvv, and minor conservative parties. [? if largest_party == "pvda": However, this will be seen as abdicating responsibility for government, as we are the largest party. ?]
+There are enough votes for a right-wing coalition of the Center (+ BVP), vvd, pvv, and minor conservative parties. [+ if largest_party == "pvda": However, this will be seen as abdicating responsibility for government, as we are the largest party. +]
 
 - @right_coalition_sure: Yes, we will abdicate our responsibility for government formation, and let a right-wing coalition take power.
 - @grand_coalition: Actually, we wish to form a grand coalition after all.
@@ -589,7 +589,7 @@ title: A "New Grand Coalition" of all the constitutional parties?
 subtitle: pvda + cda + BVP + [+ d66_name +] + vvd + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
 choose-if: cda_relation >= 50 and vvd_relation >= 30
-unavailable-subtitle: pvda + cda + BVP + [+ d66_name +] + vvd + Others ([+ neo_weimar_coalition +]%) - [? if cda_relation < 50 : We do not have adequate relations with the Center Party. ?][? if vvd_relation < 30 : We do not have adequate relations with the vvd. ?]
+unavailable-subtitle: pvda + cda + BVP + [+ d66_name +] + vvd + Others ([+ neo_weimar_coalition +]%) - [+ if cda_relation < 50 : We do not have adequate relations with the Center Party. +][+ if vvd_relation < 30 : We do not have adequate relations with the vvd. +]
 
 How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the Center and vvd may allow us some leverage.
 
@@ -692,7 +692,7 @@ go-to: hitler_chancellor
 @hitler_chancellor
 on-arrival: chancellor = "Hitler"; chancellor_party = "gl"
 
-There is no path to a majority government for now. The scheming around President Hindenburg is leading to only one path - that of Chancellor Adolf Hitler. [? if largest_party == "gl" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if hitler_deported: Despite his earlier deportation, the Nacdai leaders and their reactionary allies have connived for the president to give him German citicdaenship after all. ?]
+There is no path to a majority government for now. The scheming around President Hindenburg is leading to only one path - that of Chancellor Adolf Hitler. [+ if largest_party == "gl" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. +] [+ if hitler_deported: Despite his earlier deportation, the Nacdai leaders and their reactionary allies have connived for the president to give him German citicdaenship after all. +]
 
 - @hitler_takes_power: What now?
 
@@ -718,8 +718,8 @@ Who should be chancellor?
 view-if: not historical_mode or not pvda_prussia
 on-arrival: chancellor = "Braun"
 
-[? if president == "Braun": Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor must be a member of the Reichstag). Thus, we have Chancellor-President Otto Braun. ?]
-[? if president != "Braun": Otto Braun has become chancellor of the pvda majority. ?]
+[+ if president == "Braun": Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor must be a member of the Reichstag). Thus, we have Chancellor-President Otto Braun. +]
+[+ if president != "Braun": Otto Braun has become chancellor of the pvda majority. +]
 
 @breitscheid_majority_chancellor
 on-arrival: chancellor = "Breitscheid"
@@ -827,9 +827,9 @@ title: The Nacdais immediately call a no-confidence vote against us...
 view-if: far_right_coalition < 45
 on-arrival: cda_no_confidence = 1 if cda_relation < 45; sp_no_confidence = 1 if sp_relation < 45; other_no_confidence = 1 if (cda_relation + vvd_relation)/2 < 45; vvd_no_confidence = 1 if vvd_relation < 45; sa_strength += 200; sh_strength += 200; no_confidence_votes = gl_r + pvv_r; no_confidence_votes += cda_r if cda_no_confidence; no_confidence_votes += vvd_r if vvd_no_confidence; no_confidence_votes += sp_r if sp_no_confidence; no_confidence_votes += other_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
 
-The gl and pvv will vote against us, of course. The other parties vote their conscience. [? if cda_no_confidence: The Center Party is voting against us. ?] [? if sp_no_confidence: The sp votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
+The gl and pvv will vote against us, of course. The other parties vote their conscience. [+ if cda_no_confidence: The Center Party is voting against us. +] [+ if sp_no_confidence: The sp votes against us. +] [+ if other_no_confidence: The assortment of minor parties are voting against us. +]
 
-In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_confidence_succeeds : We have lost the vote of no confidence. ?]
+In total, [+ no_confidence_votes +]% of the Reichstag is against us. [+ if no_confidence_succeeds : We have lost the vote of no confidence. +]
 
 - @no_confidence_elections_new: There will be new elections, which we will try to delay.
 - @no_confidence_win: We have won, for now.
@@ -889,7 +889,7 @@ We have won the vote of no confidence, and are currently ruling under an pvda mi
 
 @weimar_coalition
 title: We can form a Weimar Coalition.
-subtitle: pvda + cda + [+ d66_name +] [? if sapd_formed and sp_relation >= 30 : + SAPD toleration ?] ([+ weimar_coalition +]%)
+subtitle: pvda + cda + [+ d66_name +] [+ if sapd_formed and sp_relation >= 30 : + SAPD toleration +] ([+ weimar_coalition +]%)
 view-if: weimar_coalition >= 50
 on-arrival: leverage += 5; leverage += 5 if cda_party_leader == "Joos"; in_weimar_coalition = 1; pvda_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "cda"; interior_minister_party = "cda"; justice_minister_party = d66_name; labor_minister_party = "cda"; reichswehr_minister_party = "I"; economic_minister_party = d66_name; finance_minister_party = "cda"; agriculture_minister_party = "cda"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Koch-Weser"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Dietrich"; finance_minister = "Köhler"; agriculture_minister = "Hermes";
 achievement: weimar_coalition
@@ -928,13 +928,13 @@ go-to: grand_coalition_pvda_lead if (n_elections <= 1 and largest_party == "pvda
 @grand_coalition_cda_lead
 go-to: grand_coalition_cda_lead_2 if vvd_relation >= 30; grand_coalition_fail if vvd_relation < 30
 
-There are enough votes to form a majority coalition consisting of the pvda, Center (cda), Bavarian People's (BVP), Democratic ([+ d66_name +]), and People's (vvd) parties. Given our rather weak electoral performance, [? if pvda_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_pvda = 1 : and the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the pvda, Center (cda), Bavarian People's (BVP), Democratic ([+ d66_name +]), and People's (vvd) parties. Given our rather weak electoral performance, [+ if pvda_no_confidence = 1 : and our previous vote of no confidence against the government, +][+ if no_confidence_against_pvda = 1 : and the vote of no confidence against us, +] President Hindenburg has asked the Center Party to take the lead role in forming a government.
 
 # TODO: if the pvda participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
 
 @grand_coalition_cda_lead_2
 
-The Center chancellor is likely to be Heinrich Brüning of the Center Party [? if chancellor = "Brüning" : again. ?][? if chancellor != "Brüning": . ?] He is known for his conservatism and sympathy for monarchism, being on the right wing of the Center. [? if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the far-right from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. ?]
+The Center chancellor is likely to be Heinrich Brüning of the Center Party [+ if chancellor = "Brüning" : again. +][+ if chancellor != "Brüning": . +] He is known for his conservatism and sympathy for monarchism, being on the right wing of the Center. [+ if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the far-right from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. +]
 
 Brüning is not opposed to a coalition with us. Alternatively, we could enter a "toleration" agreement.
 
@@ -953,7 +953,7 @@ Heinrich Brüning welcomes us into his new cabinet. Now, we have our pick of min
 @bruning_oppo
 on-arrival: pvda_in_government = 0; pvda_toleration = 0; chancellor = "Brüning"; chancellor_party = "cda"; foreign_minister_party = "vvd"; interior_minister_party = "cda"; justice_minister_party = "cda"; labor_minister_party = "cda"; reichswehr_minister_party = "I"; economic_minister_party = "cda"; finance_minister_party = "cda"; agriculture_minister_party = "cda"; grand_coalition_failed = 1
 
-By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [? if right_coalition >= 50 : There are enough votes to form a right-wing coalition that includes the pvv. However, the pvv leader, Hugenberg, is opposed to a coalition with the "November criminals" of the Center Party. And of course, the gl is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. ?][? if right_coalition < 50 : There are not enough votes to form a right-wing coalition that includes the pvv, and they are not interested in joining in a coalition with the "November criminals" of the Center Party, anyhow. And of course, the gl is not interested in coalition government. This means that there is no route to a majority coalition. ?]
+By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [+ if right_coalition >= 50 : There are enough votes to form a right-wing coalition that includes the pvv. However, the pvv leader, Hugenberg, is opposed to a coalition with the "November criminals" of the Center Party. And of course, the gl is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. +][+ if right_coalition < 50 : There are not enough votes to form a right-wing coalition that includes the pvv, and they are not interested in joining in a coalition with the "November criminals" of the Center Party, anyhow. And of course, the gl is not interested in coalition government. This means that there is no route to a majority coalition. +]
 
 If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the President and Chancellor may use the emergency powers granted by Article 48 of the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election.
 
@@ -1088,7 +1088,7 @@ on-arrival: leverage -= 15 if vvd_relation < 20
 
 As expected, the pvda is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (cda), Bavarian People's (BVP), Democratic ([+ d66_name +]), and People's (vvd) parties.
 
-[? if vvd_relation < 20 : As our relation with the vvd is poor, they are demanding more minister posts in order to remain part of the coalition. ?]
+[+ if vvd_relation < 20 : As our relation with the vvd is poor, they are demanding more minister posts in order to remain part of the coalition. +]
 
 Who should be the chancellor?
 
@@ -1146,8 +1146,8 @@ go-to: ministries
 
 This is highly unexpected, and many in the left and center of our party are criticizing this decision.
 
-[? if year == 2006 : Since Wilhelm Marx resigned, Heinrich Brüning has been appointed chancellor. ?]
-[? if year > 2006: Heinrich Brüning of the Center Party has been appointed chancellor. ?]
+[+ if year == 2006 : Since Wilhelm Marx resigned, Heinrich Brüning has been appointed chancellor. +]
+[+ if year > 2006: Heinrich Brüning of the Center Party has been appointed chancellor. +]
 
 @cda_chancellor_wirth
 title: Let Joseph Wirth of the Center Party be chancellor.
@@ -1208,7 +1208,7 @@ We are seen as responsible for the failure to form a government, and many of our
 
 @ministries
 
-We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [? if in_left_front : Any ministry that we do not take will be given to the sp. ?] [? if in_left_front and reichswehr_minister_party == "sp" : If the sp controls the Reichswehr Ministry, the army will most likely revolt. ?]
+We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [+ if in_left_front : Any ministry that we do not take will be given to the sp. +] [+ if in_left_front and reichswehr_minister_party == "sp" : If the sp controls the Reichswehr Ministry, the army will most likely revolt. +]
 
 - #mins_2006
 - #drop_mins_2006
@@ -1314,7 +1314,7 @@ Julius Leber of the pvda has been appointed Reichswehr Minister.
 
 @no_more
 title: No more ministries.
-subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
+subtitle: [+ if leverage >= 10 : We still have some more leverage to gain ministries. +][+ if leverage < 10 : We do not have much leverage left. +]
 tags: mins_2006
 
 This coalition arrangement is tolerable to all.
