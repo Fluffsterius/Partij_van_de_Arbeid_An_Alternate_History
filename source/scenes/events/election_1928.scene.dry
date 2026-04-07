@@ -214,7 +214,7 @@ data = [
         "name": "gl",
         "seats": Math.round(Q.gl_r*1.5),
     },
-]);
+];
 
 if (window && d3) {
     var width = 500; 
