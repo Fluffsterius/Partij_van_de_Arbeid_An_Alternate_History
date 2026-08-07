@@ -239,7 +239,7 @@ go-to: coalition_menu
  
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#5af754'> </div> !} Groenlinks: {!</td><td>!} [+ gl +]% {!</td><td>!} [+ str_change_gl +] /td></tr>!}
+{!<tr><td><div class="box" style='background-color:#5af754'> </div> !} Groenlinks: {!</td><td>!} [+ gl +]% {!</td><td>!} [+ str_change_gl +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#0a0045'> </div> !} PVV: {!</td><td>!} [+ pvv+]% {!</td><td>!} [+ str_change_pvv +] {!</td></tr>!}
 {!</table>!}
