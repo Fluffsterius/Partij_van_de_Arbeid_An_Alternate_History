@@ -1,0 +1,17 @@
+title: The 2006 municipal elections.
+subtitle: Has our opposition to the Balkenende Cabinet born fruit?
+new-page: true
+on-arrival: middle_class_pvda += 7; workers_pvda += 5:
+view-if: year = 2006 and month >= 3
+max-visits: 1
+face-image: img/bankrun.jpg
+
+= The municipal elections
+
+The Dutch municipal elections have been held with the PvdA being the big winners. We have become the largest group by voteshare, even beating the local parties which usually dominate. Furthermore the Socialist Party has doubled their voteshare which has filled their party with determination.
+
+- @aartsres: Van Aartsen has resigned..
+
+@aartsres
+
+VVD leader Van Aarsten has resigned from party leadership leading to a leadership election being held soon.
