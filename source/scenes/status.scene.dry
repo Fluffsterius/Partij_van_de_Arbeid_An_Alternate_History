@@ -168,7 +168,7 @@ CDA: [+ cda_votes +]%
 
 SP: [+ sp_votes +]%
 
-[? if not d66_name: DDP?][? if d66_name != 0 : [+ d66_name +]?]: [+ d66_votes +]%
+D66: [+ d66_votes +]%
 
 VVD: [+ vvd_votes +]%
 
