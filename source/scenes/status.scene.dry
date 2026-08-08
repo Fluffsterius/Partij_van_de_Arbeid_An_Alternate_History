@@ -89,7 +89,7 @@ Economic growth: [+ economic_growth_2 +]%
 {!<span class="tooltip-text" title="National-Socialist German Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_relation : relationships +]
 
 = Party Leadership
-[? if vvd_leader != "Veenendaal" and vvd_leader != "Verdonk": <span class="tooltip-text" title="People's Party for Freedom and Democracy" style="color: #2020a1;">**VVD**</span>: [? if vvd_ideology = "Left": Moderate Liberalsim ?][? if vvd_ideology = "Centre": Conservative Liberalism?][? if vvd_ideology = "Right" and (vvd_leader == "Rutte"): Free Liberalism?][? if vvd_ideology = "Right" and vvd_leader = "Verdonk": National Conservatism?] 
+[? if vvd_leader != "Veenendaal" and vvd_leader != "Verdonk": <span class="tooltip-text" title="People's Party for Freedom and Democracy" style="color: #2020a1;">**VVD**</span>: [? if vvd_ideology = "Left": Moderate Liberalsim ?] [? if vvd_ideology = "Centre": Conservative Liberalism ?] [? if vvd_ideology = "Right" and (vvd_leader == "Rutte"): Free Liberalism ?] [? if vvd_ideology = "Right" and vvd_leader = "Verdonk": National Conservatism ?] 
 = Internal Factions of the PvdA
 
 {!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the SP.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
